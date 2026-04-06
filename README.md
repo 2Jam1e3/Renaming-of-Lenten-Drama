@@ -8,8 +8,8 @@ A collection of PowerShell utilities for batch-renaming video files into a clean
 
 | Script | Series | Output Format |
 |---|---|---|
-| `rename_videos.ps1` | Genesis (Lenten Drama) | `Genesis - Part {n} - Chapter {letter}.mp4` |
-| `jesus.ps1` | Jesus (Holy Week Drama) | `Jesus - Part {n} - Chapter {letter}.mp4` |
+| `Genesis.ps1` | Genesis (Lenten Drama) | `Genesis - Part {n} - Chapter {letter}.mp4` |
+| `Jesus.ps1` | Jesus (Holy Week Drama) | `Jesus - Part {n} - Chapter {letter}.mp4` |
 
 ---
 
@@ -17,12 +17,12 @@ A collection of PowerShell utilities for batch-renaming video files into a clean
 
 Each script scans through a structured folder hierarchy and renames `.mp4` files into a standardized format.
 
-**`rename_videos.ps1` — Genesis Series:**
+**`Genesis.ps1` — Genesis Series:**
 ```
 Genesis - Part {number} - Chapter {letter}.mp4
 ```
 
-**`jesus.ps1` — Jesus Series:**
+**`Jesus.ps1` — Jesus Series:**
 ```
 Jesus - Part {number} - Chapter {letter}.mp4
 ```
@@ -49,7 +49,7 @@ Jesus - Part {number} - Chapter {letter}.mp4
 
 Both scripts expect the same folder layout, just under different root paths.
 
-**Genesis (`rename_videos.ps1`):**
+**Genesis (`Genesis.ps1`):**
 ```
 D:\Operation\2026\Holy Week\Lenten Drama\Genesis\
 ├── Part 1\
@@ -65,7 +65,7 @@ D:\Operation\2026\Holy Week\Lenten Drama\Genesis\
         └── ...
 ```
 
-**Jesus (`jesus.ps1`):**
+**Jesus (`Jesus.ps1`):**
 ```
 D:\Operation\2026\Holy Week\Drama\Jesus\
 ├── Part 1\
@@ -89,12 +89,12 @@ D:\Operation\2026\Holy Week\Drama\Jesus\
 
 At the top of each script, update the `$basePath` variable to match your local directory.
 
-**`rename_videos.ps1`:**
+**`Genesis.ps1`:**
 ```powershell
 $basePath = "D:\Operation\2026\Holy Week\Lenten Drama\Genesis\Part"
 ```
 
-**`jesus.ps1`:**
+**`Jesus.ps1`:**
 ```powershell
 $basePath = "D:\Operation\2026\Holy Week\Drama\Jesus\Part"
 ```
@@ -111,16 +111,16 @@ Change these paths to wherever your video files are stored before running.
 
 ```powershell
 # For the Genesis series
-.\rename_videos.ps1
+.\Genesis.ps1
 
 # For the Jesus series
-.\jesus.ps1
+.\Jesus.ps1
 ```
 
 > If you encounter an execution policy error, you can temporarily allow the script to run with:
 > ```powershell
 > Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-> .\rename_videos.ps1
+> .\Genesis.ps1
 > ```
 
 ---
