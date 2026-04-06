@@ -1,18 +1,33 @@
-# 🎬 Rename Videos — PowerShell Script
+# 🎬 Rename Videos — PowerShell Scripts
 
-A PowerShell utility for batch-renaming video files into a clean, consistent naming convention. Originally built for organizing a multi-part Lenten Drama series (Genesis), but easily adaptable for any similarly structured video library.
+A collection of PowerShell utilities for batch-renaming video files into a clean, consistent naming convention. Built for organizing multi-part Holy Week drama series, with one script per series.
 
 ---
 
-## 📋 What It Does
+## 📜 Scripts
 
-The script scans through a structured folder hierarchy and renames `.mp4` files from whatever their current filename is into a standardized format:
+| Script | Series | Output Format |
+|---|---|---|
+| `rename_videos.ps1` | Genesis (Lenten Drama) | `Genesis - Part {n} - Chapter {letter}.mp4` |
+| `jesus.ps1` | Jesus (Holy Week Drama) | `Jesus - Part {n} - Chapter {letter}.mp4` |
 
+---
+
+## 📋 What They Do
+
+Each script scans through a structured folder hierarchy and renames `.mp4` files into a standardized format.
+
+**`rename_videos.ps1` — Genesis Series:**
 ```
 Genesis - Part {number} - Chapter {letter}.mp4
 ```
 
-**Example:**
+**`jesus.ps1` — Jesus Series:**
+```
+Jesus - Part {number} - Chapter {letter}.mp4
+```
+
+**Example (Genesis):**
 
 | Before | After |
 |---|---|
@@ -20,12 +35,21 @@ Genesis - Part {number} - Chapter {letter}.mp4
 | `B.mp4` | `Genesis - Part 3 - Chapter B.mp4` |
 | `C.mp4` | `Genesis - Part 7 - Chapter C.mp4` |
 
+**Example (Jesus):**
+
+| Before | After |
+|---|---|
+| `A.mp4` | `Jesus - Part 1 - Chapter A.mp4` |
+| `B.mp4` | `Jesus - Part 5 - Chapter B.mp4` |
+| `C.mp4` | `Jesus - Part 11 - Chapter C.mp4` |
+
 ---
 
 ## 🗂️ Expected Folder Structure
 
-The script expects files to be organized in the following layout:
+Both scripts expect the same folder layout, just under different root paths.
 
+**Genesis (`rename_videos.ps1`):**
 ```
 D:\Operation\2026\Holy Week\Lenten Drama\Genesis\
 ├── Part 1\
@@ -41,19 +65,41 @@ D:\Operation\2026\Holy Week\Lenten Drama\Genesis\
         └── ...
 ```
 
-> The script iterates over **Parts 1 through 11** automatically.
+**Jesus (`jesus.ps1`):**
+```
+D:\Operation\2026\Holy Week\Drama\Jesus\
+├── Part 1\
+│   └── Chapter\
+│       ├── A.mp4
+│       ├── B.mp4
+│       └── C.mp4
+├── Part 2\
+│   └── Chapter\
+│       └── ...
+└── Part 11\
+    └── Chapter\
+        └── ...
+```
+
+> Both scripts iterate over **Parts 1 through 11** automatically.
 
 ---
 
 ## ⚙️ Configuration
 
-At the top of the script, update the `$basePath` variable to match your local directory:
+At the top of each script, update the `$basePath` variable to match your local directory.
 
+**`rename_videos.ps1`:**
 ```powershell
 $basePath = "D:\Operation\2026\Holy Week\Lenten Drama\Genesis\Part"
 ```
 
-Change this to wherever your video files are stored before running.
+**`jesus.ps1`:**
+```powershell
+$basePath = "D:\Operation\2026\Holy Week\Drama\Jesus\Part"
+```
+
+Change these paths to wherever your video files are stored before running.
 
 ---
 
@@ -61,10 +107,14 @@ Change this to wherever your video files are stored before running.
 
 1. **Open PowerShell** (Windows PowerShell or PowerShell 7+).
 2. Navigate to the folder containing the script, or provide its full path.
-3. Run the script:
+3. Run the desired script:
 
 ```powershell
+# For the Genesis series
 .\rename_videos.ps1
+
+# For the Jesus series
+.\jesus.ps1
 ```
 
 > If you encounter an execution policy error, you can temporarily allow the script to run with:
@@ -98,7 +148,7 @@ Change this to wherever your video files are stored before running.
 
 ## 📁 Adapting for Other Projects
 
-To repurpose this script for a different series or naming convention, update:
+To repurpose either script for a different series or naming convention, update:
 
 | Variable / Line | What to Change |
 |---|---|
